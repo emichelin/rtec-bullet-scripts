@@ -1,0 +1,392 @@
+{
+  "instruments": {
+    "up2": {
+      "name": "UP-2000",
+      "modules": [],
+      "specific": [
+        "sigm",
+        "delt"
+      ]
+    },
+    "up3": {
+      "name": "UP-3000",
+      "modules": [],
+      "specific": [
+        "lamb",
+        "sigm",
+        "delt"
+      ]
+    },
+    "up5": {
+      "name": "UP-5000",
+      "modules": [],
+      "specific": [
+        "lamb",
+        "sigm",
+        "delt"
+      ]
+    },
+    "mft2": {
+      "name": "MFT-2000",
+      "modules": [
+        "stat",
+        "rota",
+        "reci"
+      ],
+      "specific": [
+        "lamb",
+        "sigm",
+        "delt"
+      ]
+    },
+    "mft5": {
+      "name": "MFT-5000",
+      "modules": [
+        "stat",
+        "rota",
+        "reci",
+        "bor",
+        "scra",
+        "4ball",
+        "vcoil",
+        "mtm"
+      ],
+      "specific": [
+        "ev",
+        "tcorr",
+        "lamb",
+        "sigm",
+        "delt"
+      ]
+    },
+    "smt2": {
+      "name": "SMT-2000",
+      "modules": [
+        "stat"
+      ],
+      "specific": []
+    },
+    "smt5": {
+      "name": "SMT-5000",
+      "modules": [
+        "stat"
+      ],
+      "specific": []
+    },
+    "ust2": {
+      "name": "UST-2",
+      "modules": [
+        "stat"
+      ],
+      "specific": []
+    },
+    "fftm": {
+      "name": "FFT-M",
+      "modules": [
+        "vcoil"
+      ],
+      "specific": []
+    },
+    "fft1": {
+      "name": "FFT-1",
+      "modules": [
+        "vcoil"
+      ],
+      "specific": []
+    },
+    "fft2": {
+      "name": "FFT-2",
+      "modules": [
+        "vcoil"
+      ],
+      "specific": []
+    },
+    "aj1": {
+      "name": "AJ-1000",
+      "modules": [
+        "none"
+      ],
+      "specific": []
+    },
+    "trt1": {
+      "name": "TRT-1000",
+      "modules": [
+        "none"
+      ],
+      "specific": []
+    },
+    "mvt2": {
+      "name": "MVT-2",
+      "modules": [
+        "none"
+      ],
+      "specific": []
+    }
+  },
+  "modules": {
+    "stat": {
+      "name": "Stationary",
+      "temps": [
+        "room",
+        "heat",
+        "cool",
+        "humid"
+      ],
+      "envs": [
+        "liq",
+        "dry"
+      ],
+      "sensors": [
+        "ull",
+        "ll",
+        "ml",
+        "hl",
+        "FzFx",
+        "Fz",
+        "nano",
+        "micro",
+        "stch"
+      ]
+    },
+    "rota": {
+      "name": "Rotary",
+      "temps": [
+        "room",
+        "heat",
+        "cool",
+        "humid"
+      ],
+      "envs": [
+        "liq",
+        "dry",
+        "brk"
+      ],
+      "sensors": [
+        "ull",
+        "ll",
+        "ml",
+        "hl",
+        "FzFx",
+        "FzTq"
+      ]
+    },
+    "reci": {
+      "name": "Reciprocating",
+      "temps": [
+        "room",
+        "heat",
+        "cool",
+        "humid"
+      ],
+      "envs": [
+        "liq",
+        "dry"
+      ],
+      "sensors": [
+        "ull",
+        "ll",
+        "ml",
+        "hl",
+        "FzFx",
+        "Fzp",
+        "Fz"
+      ]
+    },
+    "bor": {
+      "name": "Block-On-Ring",
+      "temps": [
+        "room",
+        "heat",
+        "cool",
+        "humid"
+      ],
+      "envs": [
+        "cut",
+        "liq",
+        "dry"
+      ],
+      "sensors": [
+        "ml",
+        "hl",
+        "FzFx"
+      ]
+    },
+    "scra": {
+      "name": "Scratch",
+      "temps": [],
+      "envs": [
+        "dry"
+      ],
+      "sensors": [
+        "ml",
+        "hl"
+      ]
+    },
+    "4ball": {
+      "name": "4-ball",
+      "temps": [
+        "room",
+        "heat",
+        "cool"
+      ],
+      "envs": [
+        "dry"
+      ],
+      "sensors": [
+        "none"
+      ]
+    },
+    "vcoil": {
+      "name": "VoiceCoil",
+      "temps": [
+        "room",
+        "heat"
+      ],
+      "envs": [
+        "dry"
+      ],
+      "sensors": [
+        "none"
+      ]
+    },
+    "mtm": {
+      "name": "Mini Traction",
+      "temps": [
+        "room",
+        "heat"
+      ],
+      "envs": [
+        "liq",
+        "dry"
+      ],
+      "sensors": [
+        "ml"
+      ]
+    },
+    "tap": {
+      "name": "Tapping Torque",
+      "temps": [
+        "room",
+        "heat",
+        "cool"
+      ],
+      "envs": [
+        "dry"
+      ],
+      "sensors": [
+        "none"
+      ]
+    },
+    "srv": {
+      "name": "SRV",
+      "temps": [
+        "room",
+        "heat",
+        "cool",
+        "humid"
+      ],
+      "envs": [
+        "liq",
+        "dry"
+      ],
+      "sensors": [
+        "ull",
+        "ll",
+        "ml",
+        "hl",
+        "FzFx",
+        "Fzp",
+        "Fz"
+      ]
+    },
+    "none": {
+      "name": "nan",
+      "temps": [],
+      "envs": [],
+      "sensors": []
+    }
+  },
+  "temps": {
+    "room": "Ambient/Room Temperature",
+    "heat": "Heating-Controlled",
+    "cool": "Cooling-Controlled",
+    "humid": "Humidity-Controlled"
+  },
+  "envs": {
+    "liq": "Lubricated (Liquid, Grease)",
+    "dry": "Dry",
+    "brk": "Brake",
+    "cut": "Cutting"
+  },
+  "sensors": {
+    "ull": "Ultra Low-Load Argon",
+    "ll": "Low Load Argon",
+    "ml": "Medium Load Argon",
+    "hl": "High Load Argon",
+    "FzFx": "Fz+Fx",
+    "Fzp": "Fz+piezo",
+    "Fz": "Fz",
+    "FzTq": "Fz+Torque",
+    "nano": "Nano-Indentation",
+    "micro": "Micro-Indentation",
+    "stch": "Scratch",
+    "none": "nan"
+  },
+  "sensorCodes": {
+    "ull": {
+      "sensor": "2d",
+      "range": "ull"
+    },
+    "ll": {
+      "sensor": "2d",
+      "range": "ll"
+    },
+    "ml": {
+      "sensor": "2d",
+      "range": "ml"
+    },
+    "hl": {
+      "sensor": "2d",
+      "range": "hl"
+    },
+    "FzFx": {
+      "sensor": "1d1d",
+      "range": null
+    },
+    "Fzp": {
+      "sensor": "fzpz",
+      "range": null
+    },
+    "Fz": {
+      "sensor": "fz",
+      "range": null
+    },
+    "FzTq": {
+      "sensor": "fztq",
+      "range": null
+    },
+    "nano": {
+      "sensor": "nano",
+      "range": null
+    },
+    "micro": {
+      "sensor": "micro",
+      "range": null
+    },
+    "stch": {
+      "sensor": "stch",
+      "range": null
+    },
+    "none": {
+      "sensor": null,
+      "range": null
+    }
+  },
+  "specific": {
+    "ev": "Electrified",
+    "tcorr": "Tribocorrosion",
+    "lamb": "Lambda Imaging",
+    "sigm": "Sigma Imaging",
+    "delt": "Delta Imaging"
+  }
+}
