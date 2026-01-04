@@ -1,293 +1,69 @@
-// ============================================================================
-  // CONFIGURATION DATA FOR NEW MODAL
+<script>
+  // ============================================================================
+  // CONFIGURATION DATA - Version optimisée
   // ============================================================================
 
   const MODAL_DATA = {
     instruments: {
-      up2: {
-        name: 'UP-2000',
-        modules: ['sigm',
-          'delt']
-      },
-      up3: {
-        name: 'UP-3000',
-        modules: ['lamb',
-          'sigm',
-          'delt']
-      },
-      up5: {
-        name: 'UP-5000',
-        modules: ['lamb',
-          'sigm',
-          'delt']
-      },
-      mft2: {
-        name: 'MFT-2000',
-        modules: ['stat',
-          'rota',
-          'reci',
-          'lamb',
-          'sigm',
-          'delt']
-      },
-      mft5: {
-        name: 'MFT-5000',
-        modules: ['stat',
-          'rota',
-          'reci',
-          'bor',
-          'scra',
-          'urota',
-          'vcoil',
-          'mtm',
-          'lamb',
-          'sigm',
-          'delt']
-      },
-      smt2: {
-        name: 'SMT-2000',
-        modules: ['stat']
-      },
-      smt5: {
-        name: 'SMT-5000',
-        modules: ['stat']
-      },
-      ust2: {
-        name: 'UST-2',
-        modules: ['stat']
-      },
-      fftm: {
-        name: 'FFT-M',
-        modules: ['vcoil']
-      },
-      fft1: {
-        name: 'FFT-1',
-        modules: ['vcoil']
-      },
-      fft2: {
-        name: 'FFT-2',
-        modules: ['vcoil']
-      },
-      aj1: {
-        name: 'AJ-1000',
-        modules: ['none']
-      },
-      trt1: {
-        name: 'TRT-1000',
-        modules: ['none']
-      },
-      mvt2: {
-        name: 'MVT-2',
-        modules: ['none']
-      }
+      up2: { name: 'UP-2000', modules: [], specific: ['sigm', 'delt'] },
+      up3: { name: 'UP-3000', modules: [], specific: ['lamb', 'sigm', 'delt'] },
+      up5: { name: 'UP-5000', modules: [], specific: ['lamb', 'sigm', 'delt'] },
+      mft2: { name: 'MFT-2000', modules: ['stat', 'rota', 'reci'], specific: ['lamb', 'sigm', 'delt'] },
+      mft5: { name: 'MFT-5000', modules: ['stat', 'rota', 'reci', 'bor', 'scra', '4ball', 'vcoil', 'mtm'], specific: ['ev', 'tcorr', 'lamb', 'sigm', 'delt'] },
+      smt2: { name: 'SMT-2000', modules: ['stat'], specific: [] },
+      smt5: { name: 'SMT-5000', modules: ['stat'], specific: [] },
+      ust2: { name: 'UST-2', modules: ['stat'], specific: [] },
+      fftm: { name: 'FFT-M', modules: ['vcoil'], specific: [] },
+      fft1: { name: 'FFT-1', modules: ['vcoil'], specific: [] },
+      fft2: { name: 'FFT-2', modules: ['vcoil'], specific: [] },
+      aj1: { name: 'AJ-1000', modules: ['none'], specific: [] },
+      trt1: { name: 'TRT-1000', modules: ['none'], specific: [] },
+      mvt2: { name: 'MVT-2', modules: ['none'], specific: [] }
     },
     modules: {
-      stat: {
-        name: 'Stationary',
-        conditions: ['liq',
-          'dry'],
-        sensors: ['ull',
-          'll',
-          'ml',
-          'hl',
-          'FzFx',
-          'Fz',
-          'nano',
-          'micro',
-          'stch']
-      },
-      rota: {
-        name: 'Rotary',
-        conditions: ['brk',
-          'liq',
-          'heat',
-          'cool',
-          'humid',
-          'ev',
-          'dry'],
-        sensors: ['ull',
-          'll',
-          'ml',
-          'hl',
-          'FzFx',
-          'FzTq']
-      },
-      reci: {
-        name: 'Reciprocating',
-        conditions: ['srv',
-          'liq',
-          'heat',
-          'cool',
-          'humid',
-          'ev',
-          'tcorr',
-          'dry'],
-        sensors: ['ull',
-          'll',
-          'ml',
-          'hl',
-          'FzFx',
-          'Fzp',
-          'Fz']
-      },
-      bor: {
-        name: 'Block-On-Ring',
-        conditions: ['cut',
-          'grs',
-          'liq',
-          'heat',
-          'cool',
-          'humid',
-          'ev',
-          'dry'],
-        sensors: ['ml',
-          'hl',
-          'FzFx']
-      },
-      scra: {
-        name: 'Scratch',
-        conditions: ['dry'],
-        sensors: ['ml',
-          'hl']
-      },
-      urota: {
-        name: 'Upper Rotary',
-        conditions: ['tap',
-          '4ball',
-          'heat',
-          'cool',
-          'ev',
-          'dry'],
-        sensors: ['none']
-      },
-      vcoil: {
-        name: 'VoiceCoil',
-        conditions: ['heat',
-          'ev',
-          'dry'],
-        sensors: ['none']
-      },
-      mtm: {
-        name: 'Mini Traction',
-        conditions: ['liq',
-          'heat',
-          'ev',
-          'dry'],
-        sensors: ['ml']
-      },
-      lamb: {
-        name: 'Lambda Imaging',
-        conditions: ['bfdf',
-          'cfc',
-          'wli'],
-        sensors: ['none']
-      },
-      sigm: {
-        name: 'Sigma Imaging',
-        conditions: ['bfdf',
-          'wli'],
-        sensors: ['none']
-      },
-      delt: {
-        name: 'Delta Imaging',
-        conditions: ['bfdf'],
-        sensors: ['none']
-      },
-      none: {
-        name: 'None',
-        conditions: [],
-        sensors: []
-      }
+      stat: { name: 'Stationary', temps: ['room', 'heat', 'cool', 'humid'], envs: ['liq', 'dry'], sensors: ['ull', 'll', 'ml', 'hl', 'FzFx', 'Fz', 'nano', 'micro', 'stch'] },
+      rota: { name: 'Rotary', temps: ['room', 'heat', 'cool', 'humid'], envs: ['liq', 'dry', 'brk'], sensors: ['ull', 'll', 'ml', 'hl', 'FzFx', 'FzTq'] },
+      reci: { name: 'Reciprocating', temps: ['room', 'heat', 'cool', 'humid'], envs: ['liq', 'dry'], sensors: ['ull', 'll', 'ml', 'hl', 'FzFx', 'Fzp', 'Fz'] },
+      bor: { name: 'Block-On-Ring', temps: ['room', 'heat', 'cool', 'humid'], envs: ['cut', 'liq', 'dry'], sensors: ['ml', 'hl', 'FzFx'] },
+      scra: { name: 'Scratch', temps: [], envs: ['dry'], sensors: ['ml', 'hl'] },
+      '4ball': { name: '4-ball', temps: ['room', 'heat', 'cool'], envs: ['dry'], sensors: ['none'] },
+      vcoil: { name: 'VoiceCoil', temps: ['room', 'heat'], envs: ['dry'], sensors: ['none'] },
+      mtm: { name: 'Mini Traction', temps: ['room', 'heat'], envs: ['liq', 'dry'], sensors: ['ml'] },
+      tap: { name: 'Tapping Torque', temps: ['room', 'heat', 'cool'], envs: ['dry'], sensors: ['none'] },
+      srv: { name: 'SRV', temps: ['room', 'heat', 'cool', 'humid'], envs: ['liq', 'dry'], sensors: ['ull', 'll', 'ml', 'hl', 'FzFx', 'Fzp', 'Fz'] },
+      none: { name: 'None', temps: [], envs: [], sensors: [] }
     },
-    conditions: {
-      srv: 'SRV',
-      tap: 'Tapping Torque',
-      '4ball': '4-ball',
-      brk: 'Brake',
-      cut: 'Cutting',
-      grs: 'Grease Test',
-      liq: 'Liquid',
-      heat: 'Heated',
-      cool: 'Cooled',
-      humid: 'Humidity',
-      ev: 'Electrified',
-      tcorr: 'Tribocorrosion',
+    temps: {
+      room: 'Ambient/Room Temperature',
+      heat: 'Heating-Controlled',
+      cool: 'Cooling-Controlled',
+      humid: 'Humidity-Controlled'
+    },
+    envs: {
+      liq: 'Lubricated (Liquid, Grease)',
       dry: 'Dry',
-      bfdf: 'Bright Field Dark Field',
-      cfc: 'Confocal',
-      wli: 'White Light'
+      brk: 'Brake',
+      cut: 'Cutting'
     },
     sensors: {
-      ull: 'Ultra Low-Load Argon',
-      ll: 'Low Load Argon',
-      ml: 'Medium Load Argon',
-      hl: 'High Load Argon',
-      FzFx: 'Fz+Fx',
-      Fzp: 'Fz+piezo',
-      Fz: 'Fz',
-      FzTq: 'Fz+Torque',
-      nano: 'Nano-Indentation',
-      micro: 'Micro-Indentation',
-      stch: 'Scratch',
-      none: 'None'
+      ull: 'Ultra Low-Load Argon', ll: 'Low Load Argon', ml: 'Medium Load Argon', hl: 'High Load Argon',
+      FzFx: 'Fz+Fx', Fzp: 'Fz+piezo', Fz: 'Fz', FzTq: 'Fz+Torque',
+      nano: 'Nano-Indentation', micro: 'Micro-Indentation', stch: 'Scratch', none: 'None'
     },
     sensorCodes: {
-      ull: {
-        sensor: '2d',
-        range: 'ull'
-      },
-      ll: {
-        sensor: '2d',
-        range: 'll'
-      },
-      ml: {
-        sensor: '2d',
-        range: 'ml'
-      },
-      hl: {
-        sensor: '2d',
-        range: 'hl'
-      },
-      FzFx: {
-        sensor: '1d1d',
-        range: null
-      },
-      Fzp: {
-        sensor: 'fzpz',
-        range: null
-      },
-      Fz: {
-        sensor: 'fz',
-        range: null
-      },
-      FzTq: {
-        sensor: 'fztq',
-        range: null
-      },
-      nano: {
-        sensor: 'nano',
-        range: null
-      },
-      micro: {
-        sensor: 'micro',
-        range: null
-      },
-      stch: {
-        sensor: 'stch',
-        range: null
-      },
-      none: {
-        sensor: null,
-        range: null
-      }
+      ull: { sensor: '2d', range: 'ull' }, ll: { sensor: '2d', range: 'll' },
+      ml: { sensor: '2d', range: 'ml' }, hl: { sensor: '2d', range: 'hl' },
+      FzFx: { sensor: '1d1d', range: null }, Fzp: { sensor: 'fzpz', range: null },
+      Fz: { sensor: 'fz', range: null }, FzTq: { sensor: 'fztq', range: null },
+      nano: { sensor: 'nano', range: null }, micro: { sensor: 'micro', range: null },
+      stch: { sensor: 'stch', range: null }, none: { sensor: null, range: null }
     },
-    condition2: {
-      lvdt: 'LVDT',
-      liq: 'Liquid',
+    specific: {
       ev: 'Electrified',
-      heat: 'Heated',
-      cool: 'Cooled',
-      humid: 'Humidity'
+      tcorr: 'Tribocorrosion',
+      lamb: 'Lambda Imaging',
+      sigm: 'Sigma Imaging',
+      delt: 'Delta Imaging'
     }
   };
 
@@ -305,32 +81,26 @@
     let sensor = urlParams.get('sensor') || sessionStorage.getItem('bullet_sensor');
     let env = urlParams.get('env') || sessionStorage.getItem('bullet_env');
     let cond = urlParams.get('cond') || sessionStorage.getItem('bullet_cond');
-    let opt = urlParams.get('opt') || sessionStorage.getItem('bullet_opt');
-    let other = urlParams.get('other') || sessionStorage.getItem('bullet_other');
+    let spe = urlParams.get('spe') || sessionStorage.getItem('bullet_spe');
     let range = urlParams.get('range') || sessionStorage.getItem('bullet_range');
-    let img = urlParams.get('img') || sessionStorage.getItem('bullet_img');
 
     if (model) sessionStorage.setItem('bullet_model', model);
     if (module) sessionStorage.setItem('bullet_module', module);
     if (sensor) sessionStorage.setItem('bullet_sensor', sensor);
     if (env) sessionStorage.setItem('bullet_env', env);
     if (cond) sessionStorage.setItem('bullet_cond', cond);
-    if (opt) sessionStorage.setItem('bullet_opt', opt);
-    if (other) sessionStorage.setItem('bullet_other', other);
+    if (spe) sessionStorage.setItem('bullet_spe', spe);
     if (range) sessionStorage.setItem('bullet_range', range);
-    if (img) sessionStorage.setItem('bullet_img', img);
 
-    if (model || module || sensor || env || cond || opt || other || range || img) {
+    if (model || module || sensor || env || cond || spe || range) {
       const newUrl = new URL(window.location);
       if (model) newUrl.searchParams.set('model', model);
       if (module) newUrl.searchParams.set('module', module);
       if (sensor) newUrl.searchParams.set('sensor', sensor);
       if (env) newUrl.searchParams.set('env', env);
       if (cond) newUrl.searchParams.set('cond', cond);
-      if (opt) newUrl.searchParams.set('opt', opt);
-      if (other) newUrl.searchParams.set('other', other);
+      if (spe) newUrl.searchParams.set('spe', spe);
       if (range) newUrl.searchParams.set('range', range);
-      if (img) newUrl.searchParams.set('img', img);
       window.history.replaceState({}, '', newUrl.toString());
     }
 
@@ -353,20 +123,16 @@
         const sensor = newParams.get('sensor') || sessionStorage.getItem('bullet_sensor');
         const env = newParams.get('env') || sessionStorage.getItem('bullet_env');
         const cond = newParams.get('cond') || sessionStorage.getItem('bullet_cond');
-        const opt = newParams.get('opt') || sessionStorage.getItem('bullet_opt');
-        const other = newParams.get('other') || sessionStorage.getItem('bullet_other');
+        const spe = newParams.get('spe') || sessionStorage.getItem('bullet_spe');
         const range = newParams.get('range') || sessionStorage.getItem('bullet_range');
-        const img = newParams.get('img') || sessionStorage.getItem('bullet_img');
 
         if (model) sessionStorage.setItem('bullet_model', model);
         if (module) sessionStorage.setItem('bullet_module', module);
         if (sensor) sessionStorage.setItem('bullet_sensor', sensor);
         if (env) sessionStorage.setItem('bullet_env', env);
         if (cond) sessionStorage.setItem('bullet_cond', cond);
-        if (opt) sessionStorage.setItem('bullet_opt', opt);
-        if (other) sessionStorage.setItem('bullet_other', other);
+        if (spe) sessionStorage.setItem('bullet_spe', spe);
         if (range) sessionStorage.setItem('bullet_range', range);
-        if (img) sessionStorage.setItem('bullet_img', img);
 
         const newUrl = new URL(window.location);
         if (model) newUrl.searchParams.set('model', model);
@@ -374,10 +140,8 @@
         if (sensor) newUrl.searchParams.set('sensor', sensor);
         if (env) newUrl.searchParams.set('env', env);
         if (cond) newUrl.searchParams.set('cond', cond);
-        if (opt) newUrl.searchParams.set('opt', opt);
-        if (other) newUrl.searchParams.set('other', other);
+        if (spe) newUrl.searchParams.set('spe', spe);
         if (range) newUrl.searchParams.set('range', range);
-        if (img) newUrl.searchParams.set('img', img);
 
         window.history.pushState({}, '', newUrl.toString());
         window.dispatchEvent(new Event('bulletParamsChanged'));
@@ -393,10 +157,8 @@
         const currentSensor = sessionStorage.getItem('bullet_sensor');
         const currentEnv = sessionStorage.getItem('bullet_env');
         const currentCond = sessionStorage.getItem('bullet_cond');
-        const currentOpt = sessionStorage.getItem('bullet_opt');
-        const currentOther = sessionStorage.getItem('bullet_other');
+        const currentSpe = sessionStorage.getItem('bullet_spe');
         const currentRange = sessionStorage.getItem('bullet_range');
-        const currentImg = sessionStorage.getItem('bullet_img');
 
         const linkParams = new URLSearchParams(linkUrl.search);
         const linkModel = linkParams.get('model');
@@ -404,30 +166,24 @@
         const linkSensor = linkParams.get('sensor');
         const linkEnv = linkParams.get('env');
         const linkCond = linkParams.get('cond');
-        const linkOpt = linkParams.get('opt');
-        const linkOther = linkParams.get('other');
+        const linkSpe = linkParams.get('spe');
         const linkRange = linkParams.get('range');
-        const linkImg = linkParams.get('img');
 
         const finalModel = linkModel || currentModel;
         const finalModule = linkModule || currentModule;
         const finalSensor = linkSensor || currentSensor;
         const finalEnv = linkEnv || currentEnv;
         const finalCond = linkCond || currentCond;
-        const finalOpt = linkOpt || currentOpt;
-        const finalOther = linkOther || currentOther;
+        const finalSpe = linkSpe || currentSpe;
         const finalRange = linkRange || currentRange;
-        const finalImg = linkImg || currentImg;
 
         if (finalModel) sessionStorage.setItem('bullet_model', finalModel);
         if (finalModule) sessionStorage.setItem('bullet_module', finalModule);
         if (finalSensor) sessionStorage.setItem('bullet_sensor', finalSensor);
         if (finalEnv) sessionStorage.setItem('bullet_env', finalEnv);
         if (finalCond) sessionStorage.setItem('bullet_cond', finalCond);
-        if (finalOpt) sessionStorage.setItem('bullet_opt', finalOpt);
-        if (finalOther) sessionStorage.setItem('bullet_other', finalOther);
+        if (finalSpe) sessionStorage.setItem('bullet_spe', finalSpe);
         if (finalRange) sessionStorage.setItem('bullet_range', finalRange);
-        if (finalImg) sessionStorage.setItem('bullet_img', finalImg);
 
         const finalUrl = new URL(linkUrl.pathname, window.location.origin);
         if (finalModel) finalUrl.searchParams.set('model', finalModel);
@@ -435,16 +191,13 @@
         if (finalSensor) finalUrl.searchParams.set('sensor', finalSensor);
         if (finalEnv) finalUrl.searchParams.set('env', finalEnv);
         if (finalCond) finalUrl.searchParams.set('cond', finalCond);
-        if (finalOpt) finalUrl.searchParams.set('opt', finalOpt);
-        if (finalOther) finalUrl.searchParams.set('other', finalOther);
+        if (finalSpe) finalUrl.searchParams.set('spe', finalSpe);
         if (finalRange) finalUrl.searchParams.set('range', finalRange);
-        if (finalImg) finalUrl.searchParams.set('img', finalImg);
         if (linkUrl.hash) finalUrl.hash = linkUrl.hash;
 
         window.location.href = finalUrl.toString();
       }
-    },
-      true);
+    }, true);
 
     console.log('✅ Parameter persistence initialized');
   })();
@@ -463,8 +216,7 @@
         sensor: urlParams.get('sensor') || sessionStorage.getItem('bullet_sensor'),
         env: urlParams.get('env') || sessionStorage.getItem('bullet_env'),
         cond: urlParams.get('cond') || sessionStorage.getItem('bullet_cond'),
-        opt: urlParams.get('opt') || sessionStorage.getItem('bullet_opt'),
-        img: urlParams.get('img') || sessionStorage.getItem('bullet_img')
+        spe: urlParams.get('spe') || sessionStorage.getItem('bullet_spe')
       };
     }
 
@@ -479,20 +231,12 @@
       const oldDisplay = navbar.querySelector('.params-display');
       if (oldDisplay) oldDisplay.remove();
 
-      const {
-        model,
-        module,
-        sensor,
-        env,
-        cond,
-        opt,
-        img
-      } = getParams();
+      const { model, module, sensor, env, cond, spe } = getParams();
 
       const paramsDisplay = document.createElement('div');
       paramsDisplay.className = 'params-display';
 
-      if (!model && !module && !sensor && !env && !cond && !opt && !img) {
+      if (!model && !module && !sensor && !env && !cond && !spe) {
         paramsDisplay.textContent = 'Full Manual';
         paramsDisplay.classList.add('full-manual');
       } else {
@@ -502,8 +246,7 @@
         if (sensor) params.push(sensor);
         if (env) params.push(env);
         if (cond) params.push(cond);
-        if (opt) params.push(opt);
-        if (img) params.push(img);
+        if (spe) params.push(spe);
         paramsDisplay.textContent = params.join(' • ');
         paramsDisplay.classList.add('has-params');
       }
@@ -529,7 +272,7 @@
   })();
 
   // ============================================================================
-  // STEP 3: NEW CONFIGURE MODAL WITH IMAGING CHECKBOXES
+  // STEP 3: CONFIGURE MODAL - VERSION OPTIMISÉE
   // ============================================================================
   (function() {
     'use strict';
@@ -537,533 +280,460 @@
     let modalState = {
       instrument: null,
       module: null,
-      condition1: null,
+      condition: null,
+      env: null,
       sensor: null,
-      condition2: [],
-      imaging: null
+      spe: null
     };
 
-    // === UTILITY FUNCTIONS ===
-
-    function showSection(sectionId) {
-      const section = document.getElementById(sectionId);
-      if (section && !section.classList.contains('visible')) {
-        section.style.display = 'inline';
-        setTimeout(() => section.classList.add('visible'), 10);
-      }
-    }
-
-    function hideSection(sectionId) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.classList.remove('visible');
-        setTimeout(() => section.style.display = 'none', 300);
-      }
-    }
-
-    function resetTrigger(selectId) {
-      const trigger = document.querySelector(`#${selectId} .select-trigger`);
-      if (trigger) {
-        const placeholder = trigger.dataset.placeholder;
-        trigger.textContent = placeholder;
-        trigger.classList.remove('has-value');
-      }
-      const options = document.querySelectorAll(`#${selectId} .select-option`);
-      options.forEach(opt => opt.classList.remove('selected'));
-    }
-
-    function populateDropdown(selectId, options) {
-      const dropdown = document.querySelector(`#${selectId} .select-dropdown`);
-      if (!dropdown) return;
-
-      dropdown.innerHTML = '';
-      Object.entries(options).forEach(([value, label]) => {
-        const option = document.createElement('div');
-        option.className = 'select-option';
-        option.dataset.value = value;
-        option.textContent = label;
-        option.addEventListener('click', (e) => {
-          e.stopPropagation();
-          handleSelect(selectId, value, label);
+    // =============================================================================
+    // UI UTILITIES
+    // =============================================================================
+    const ui = {
+      showSection: (id) => {
+        const el = document.getElementById(id);
+        if (el && !el.classList.contains('visible')) {
+          el.style.display = 'inline';
+          setTimeout(() => el.classList.add('visible'), 10);
+        }
+      },
+      
+      hideSection: (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.remove('visible');
+          setTimeout(() => el.style.display = 'none', 300);
+        }
+      },
+      
+      resetTrigger: (selectId) => {
+        const trigger = document.querySelector(`#${selectId} .select-trigger`);
+        if (trigger) {
+          trigger.textContent = trigger.dataset.placeholder;
+          trigger.classList.remove('has-value');
+        }
+        document.querySelectorAll(`#${selectId} .select-option`).forEach(opt => 
+          opt.classList.remove('selected')
+        );
+      },
+      
+      populateDropdown: (selectId, options) => {
+        const dropdown = document.querySelector(`#${selectId} .select-dropdown`);
+        if (!dropdown) return;
+        
+        dropdown.innerHTML = '';
+        Object.entries(options).forEach(([value, label]) => {
+          const option = document.createElement('div');
+          option.className = 'select-option';
+          option.dataset.value = value;
+          option.textContent = label;
+          option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            handleSelect(selectId, value, label);
+          });
+          dropdown.appendChild(option);
         });
-        dropdown.appendChild(option);
-      });
-    }
-
-    function handleSelect(selectId, value, label) {
-      const trigger = document.querySelector(`#${selectId} .select-trigger`);
-      const dropdown = document.querySelector(`#${selectId} .select-dropdown`);
-
-      trigger.textContent = label;
-      trigger.classList.add('has-value');
-      dropdown.classList.remove('active');
-      trigger.classList.remove('active');
-
-      document.querySelectorAll(`#${selectId} .select-option`).forEach(opt => opt.classList.remove('selected'));
-      document.querySelector(`#${selectId} .select-option[data-value="${value}"]`)?.classList.add('selected');
-
-      if (selectId === 'selectInstrument') {
-        handleInstrumentSelect(value);
-      } else if (selectId === 'selectModule') {
-        handleModuleSelect(value);
-      } else if (selectId === 'selectCondition1') {
-        handleCondition1Select(value);
-      } else if (selectId === 'selectSensor') {
-        handleSensorSelect(value);
+      },
+      
+      selectOption: (selectId, value, label) => {
+        const trigger = document.querySelector(`#${selectId} .select-trigger`);
+        const dropdown = document.querySelector(`#${selectId} .select-dropdown`);
+        
+        if (trigger) {
+          trigger.textContent = label;
+          trigger.classList.add('has-value');
+        }
+        
+        if (dropdown) {
+          dropdown.classList.remove('active');
+          trigger?.classList.remove('active');
+          
+          dropdown.querySelectorAll('.select-option').forEach(opt => 
+            opt.classList.toggle('selected', opt.dataset.value === value)
+          );
+        }
+      },
+      
+      autoSelect: (selectId, value) => {
+        if (!value) return;
+        
+        const label = {
+          selectCondition1: MODAL_DATA.temps[value],
+          selectEnv: MODAL_DATA.envs[value]
+        }[selectId];
+        
+        if (!label) return;
+        
+        setTimeout(() => {
+          ui.selectOption(selectId, value, label);
+          const handlers = {
+            selectCondition1: handleConditionSelect,
+            selectEnv: handleEnvSelect
+          };
+          handlers[selectId]?.(value);
+        }, 50);
       }
-    }
+    };
 
-    // === SELECTION HANDLERS ===
+    // =============================================================================
+    // STATE MANAGER
+    // =============================================================================
+    const stateManager = {
+      reset: (from) => {
+        const fields = ['instrument', 'module', 'condition', 'env', 'sensor', 'spe'];
+        const idx = fields.indexOf(from);
+        fields.slice(idx + 1).forEach(field => modalState[field] = null);
+      },
+      
+      resetUI: () => {
+        ['selectModule', 'selectCondition1', 'selectEnv', 'selectSensor', 'selectSpe']
+          .forEach(ui.resetTrigger);
+        
+        ['section-module', 'section-condition1', 'section-env', 'section-sensor', 'section-spe']
+          .forEach(ui.hideSection);
+      }
+    };
+
+    // =============================================================================
+    // HANDLERS
+    // =============================================================================
+    function handleSelect(selectId, value, label) {
+      ui.selectOption(selectId, value, label);
+      
+      const handlers = {
+        selectInstrument: handleInstrumentSelect,
+        selectModule: handleModuleSelect,
+        selectCondition1: handleConditionSelect,
+        selectEnv: handleEnvSelect,
+        selectSensor: handleSensorSelect,
+        selectSpe: handleSpeSelect
+      };
+      
+      handlers[selectId]?.(value);
+    }
 
     function handleInstrumentSelect(value) {
+      stateManager.reset('instrument');
+      stateManager.resetUI();
       modalState.instrument = value;
-      modalState.module = null;
-      modalState.condition1 = null;
-      modalState.sensor = null;
-      modalState.condition2 = [];
-      modalState.imaging = null;
-
-      ['section-module',
-        'section-condition1',
-        'section-sensor'].forEach(hideSection);
-      document.getElementById('section-checkboxes-wrapper').style.display = 'none';
-
-      resetTrigger('selectModule');
-      resetTrigger('selectCondition1');
-      resetTrigger('selectSensor');
-
-      const instrumentData = MODAL_DATA.instruments[value];
-
-      if (instrumentData.modules.includes('none')) {
-        return;
+      
+      const instrument = MODAL_DATA.instruments[value];
+      
+      const validModules = instrument.modules
+        .filter(mod => MODAL_DATA.modules[mod])
+        .reduce((acc, mod) => {
+          acc[mod] = MODAL_DATA.modules[mod].name;
+          return acc;
+        }, {});
+      
+      if (Object.keys(validModules).length === 0) {
+        showSpecificSection();
+      } else {
+        ui.populateDropdown('selectModule', validModules);
+        ui.showSection('section-module');
       }
-
-      const availableModules = {};
-      instrumentData.modules.forEach(mod => {
-        availableModules[mod] = MODAL_DATA.modules[mod].name;
-      });
-
-      populateDropdown('selectModule', availableModules);
-      showSection('section-module');
+      
+      updateResult();
     }
 
     function handleModuleSelect(value) {
       modalState.module = value;
-      modalState.condition1 = null;
-      modalState.sensor = null;
-      modalState.condition2 = [];
-      modalState.imaging = null;
-
-      ['section-condition1',
-        'section-sensor'].forEach(hideSection);
-      document.getElementById('section-checkboxes-wrapper').style.display = 'none';
-
-      resetTrigger('selectCondition1');
-      resetTrigger('selectSensor');
-
-      const moduleData = MODAL_DATA.modules[value];
-
-      const availableConditions = {};
-      moduleData.conditions.forEach(cond => {
-        availableConditions[cond] = MODAL_DATA.conditions[cond];
-      });
-
-      populateDropdown('selectCondition1', availableConditions);
-      showSection('section-condition1');
+      stateManager.reset('module');
+      
+      ['section-condition1', 'section-env', 'section-sensor', 'section-spe'].forEach(ui.hideSection);
+      ['selectCondition1', 'selectEnv', 'selectSensor', 'selectSpe'].forEach(ui.resetTrigger);
+      
+      const module = MODAL_DATA.modules[value];
+      const tempOptions = module.temps.reduce((acc, temp) => {
+        acc[temp] = MODAL_DATA.temps[temp];
+        return acc;
+      }, {});
+      
+      if (Object.keys(tempOptions).length > 0) {
+        ui.populateDropdown('selectCondition1', tempOptions);
+        ui.showSection('section-condition1');
+        
+        if (module.temps.includes('room')) {
+          ui.autoSelect('selectCondition1', 'room');
+        }
+      } else {
+        handleConditionSelect('none');
+      }
+      
+      updateResult();
     }
 
-    function handleCondition1Select(value) {
-      modalState.condition1 = value;
-      modalState.sensor = null;
-      modalState.condition2 = [];
-      modalState.imaging = null;
+    function handleConditionSelect(value) {
+      modalState.condition = value;
+      stateManager.reset('condition');
+      
+      ['section-env', 'section-sensor', 'section-spe'].forEach(ui.hideSection);
+      ['selectEnv', 'selectSensor', 'selectSpe'].forEach(ui.resetTrigger);
+      
+      const module = MODAL_DATA.modules[modalState.module];
+      const envOptions = module.envs.reduce((acc, env) => {
+        acc[env] = MODAL_DATA.envs[env];
+        return acc;
+      }, {});
+      
+      if (Object.keys(envOptions).length > 0) {
+        ui.populateDropdown('selectEnv', envOptions);
+        ui.showSection('section-env');
+        
+        if (module.envs.includes('dry')) {
+          ui.autoSelect('selectEnv', 'dry');
+        }
+      } else {
+        handleEnvSelect('none');
+      }
+      
+      updateResult();
+    }
 
-      ['section-sensor'].forEach(hideSection);
-      document.getElementById('section-checkboxes-wrapper').style.display = 'none';
-
-      resetTrigger('selectSensor');
-
-      const moduleData = MODAL_DATA.modules[modalState.module];
-
-      if (moduleData.sensors.includes('none')) {
-        updateCheckboxes();
-        document.getElementById('section-checkboxes-wrapper').style.display = 'block';
-        updateImagingSection();
+    function handleEnvSelect(value) {
+      modalState.env = value;
+      stateManager.reset('env');
+      
+      ['section-sensor', 'section-spe'].forEach(ui.hideSection);
+      ['selectSensor', 'selectSpe'].forEach(ui.resetTrigger);
+      
+      const module = MODAL_DATA.modules[modalState.module];
+      
+      if (module.sensors.includes('none')) {
+        handleSensorSelect('none');
         return;
       }
-
-      const availableSensors = {};
-      moduleData.sensors.forEach(sens => {
-        availableSensors[sens] = MODAL_DATA.sensors[sens];
-      });
-
-      populateDropdown('selectSensor', availableSensors);
-      showSection('section-sensor');
+      
+      const sensorOptions = module.sensors.reduce((acc, sens) => {
+        acc[sens] = MODAL_DATA.sensors[sens];
+        return acc;
+      }, {});
+      
+      ui.populateDropdown('selectSensor', sensorOptions);
+      ui.showSection('section-sensor');
+      updateResult();
     }
 
     function handleSensorSelect(value) {
       modalState.sensor = value;
-      modalState.condition2 = [];
-      modalState.imaging = null;
-
-      updateCheckboxes();
-      document.getElementById('section-checkboxes-wrapper').style.display = 'block';
-      updateImagingSection();
+      modalState.spe = null;
+      
+      ui.hideSection('section-spe');
+      ui.resetTrigger('selectSpe');
+      
+      showSpecificSection();
+      updateResult();
     }
 
-    // === IMAGING SECTION ===
+    function handleSpeSelect(value) {
+      modalState.spe = value;
+      updateResult();
+    }
 
-    function updateImagingSection() {
-      const imagingSubsection = document.getElementById('imaging-subsection');
-      const imagingGrid = document.getElementById('imagingGrid');
+    function showSpecificSection() {
+      if (!modalState.instrument) return;
+      
+      const instrument = MODAL_DATA.instruments[modalState.instrument];
+      const speOptions = instrument.specific.reduce((acc, spe) => {
+        acc[spe] = MODAL_DATA.specific[spe];
+        return acc;
+      }, {});
+      
+      if (Object.keys(speOptions).length > 0) {
+        ui.populateDropdown('selectSpe', speOptions);
+        ui.showSection('section-spe');
+      }
+    }
 
+    // =============================================================================
+    // UPDATE RESULT
+    // =============================================================================
+    function updateResult() {
+      const params = [];
+      
+      if (modalState.instrument) params.push(`model=${modalState.instrument}`);
+      if (modalState.module) params.push(`module=${modalState.module}`);
+      if (modalState.condition) params.push(`cond=${modalState.condition}`);
+      if (modalState.env) params.push(`env=${modalState.env}`);
+      
+      if (modalState.sensor) {
+        const config = MODAL_DATA.sensorCodes[modalState.sensor];
+        if (config?.sensor) params.push(`sensor=${config.sensor}`);
+        if (config?.range) params.push(`range=${config.range}`);
+      }
+      
+      if (modalState.spe) params.push(`spe=${modalState.spe}`);
+      
+      // Update navbar
+      const display = document.querySelector('.params-display');
       if (!modalState.instrument) {
-        imagingSubsection.style.display = 'none';
-        return;
-      }
-
-      const instrumentData = MODAL_DATA.instruments[modalState.instrument];
-
-      const imagingOptions = [];
-      if (instrumentData.modules.includes('lamb')) {
-        imagingOptions.push({
-          value: 'lamb', label: 'Lambda Imaging Head'
-        });
-      }
-      if (instrumentData.modules.includes('sigm')) {
-        imagingOptions.push({
-          value: 'sigm', label: 'Sigma Imaging Head'
-        });
-      }
-      if (instrumentData.modules.includes('delt')) {
-        imagingOptions.push({
-          value: 'delt', label: 'Delta Imaging Head'
-        });
-      }
-
-      if (imagingOptions.length > 0) {
-        imagingGrid.innerHTML = '';
-        imagingOptions.forEach(({
-          value, label
-        }) => {
-          const item = document.createElement('div');
-          item.className = 'checkbox-item';
-
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.id = `img_${value}`;
-          checkbox.value = value;
-          checkbox.addEventListener('change', (e) => {
-            if (e.target.checked) {
-              document.querySelectorAll('#imagingGrid input[type="checkbox"]').forEach(cb => {
-                if (cb !== checkbox) cb.checked = false;
-              });
-              modalState.imaging = value;
-            } else {
-              modalState.imaging = null;
-            }
-          });
-
-          const labelEl = document.createElement('label');
-          labelEl.htmlFor = `img_${value}`;
-          labelEl.textContent = label;
-
-          item.appendChild(checkbox);
-          item.appendChild(labelEl);
-          imagingGrid.appendChild(item);
-        });
-        imagingSubsection.style.display = 'block';
+        display.textContent = 'Full Manual';
+        display.className = 'params-display full-manual';
       } else {
-        imagingSubsection.style.display = 'none';
+        const parts = [
+          modalState.instrument,
+          modalState.module,
+          modalState.condition,
+          modalState.env,
+          modalState.sensor,
+          modalState.spe
+        ].filter(Boolean);
+        
+        display.textContent = parts.join(' • ');
+        display.className = 'params-display has-params';
       }
     }
 
-    // === CONDITION2 CHECKBOXES ===
-
-    function updateCheckboxes() {
-      const grid = document.getElementById('checkboxGrid');
-      grid.innerHTML = '';
-
-      const options = {
-        ...MODAL_DATA.condition2
-      };
-
-      delete options[modalState.condition1];
-
-      if (modalState.module !== 'reci') {
-        delete options.lvdt;
-      }
-
-      Object.entries(options).forEach(([value, label]) => {
-        const item = document.createElement('div');
-        item.className = 'checkbox-item';
-
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `cond2_${value}`;
-        checkbox.value = value;
-        checkbox.addEventListener('change', (e) => {
-          if (e.target.checked) {
-            if (!modalState.condition2.includes(value)) {
-              modalState.condition2.push(value);
-            }
-          } else {
-            modalState.condition2 = modalState.condition2.filter(v => v !== value);
-          }
-        });
-
-        const labelEl = document.createElement('label');
-        labelEl.htmlFor = `cond2_${value}`;
-        labelEl.textContent = label;
-
-        item.appendChild(checkbox);
-        item.appendChild(labelEl);
-        grid.appendChild(item);
-      });
-    }
-
-    // === MODAL INITIALIZATION ===
-
-    function initConfigureModal() {
+    // =============================================================================
+    // INIT
+    // =============================================================================
+    function initModal() {
       const navbar = document.querySelector('.navbar.bullet-navbar');
-      const configureButton = navbar?.querySelector('.configure-button');
+      const configBtn = navbar?.querySelector('.configure-button');
 
-      if (!configureButton) {
-        setTimeout(initConfigureModal, 100);
+      if (!configBtn) {
+        setTimeout(initModal, 100);
         return;
       }
 
+      // Create modal
       const modal = document.createElement('div');
       modal.className = 'configure-modal';
       modal.id = 'configModal';
       modal.innerHTML = `
-      <button class="configure-close-button">×</button>
-      <h3 class="configure-modal-title">Configure your manual</h3>
+        <button class="configure-close-button">×</button>
+        <h3 class="configure-modal-title">Configure your manual</h3>
 
-      <div class="configure-form-paragraph">
-      My instrument is a
-      <div class="custom-select" id="selectInstrument">
-      <div class="select-trigger" data-placeholder="choose instrument">choose instrument</div>
-      <div class="select-dropdown">
-      <div class="select-option" data-value="up2">UP-2000</div>
-      <div class="select-option" data-value="up3">UP-3000</div>
-      <div class="select-option" data-value="up5">UP-5000</div>
-      <div class="select-option" data-value="mft2">MFT-2000</div>
-      <div class="select-option" data-value="mft5">MFT-5000</div>
-      <div class="select-option" data-value="smt2">SMT-2000</div>
-      <div class="select-option" data-value="smt5">SMT-5000</div>
-      <div class="select-option" data-value="ust2">UST-2</div>
-      <div class="select-option" data-value="fftm">FFT-M</div>
-      <div class="select-option" data-value="fft1">FFT-1</div>
-      <div class="select-option" data-value="fft2">FFT-2</div>
-      <div class="select-option" data-value="aj1">AJ-1000</div>
-      <div class="select-option" data-value="trt1">TRT-1000</div>
-      <div class="select-option" data-value="mvt2">MVT-2</div>
-      </div>
-      </div>.
+        <div class="configure-form-paragraph">
+          <div class="custom-select" id="selectInstrument">
+            <div class="select-trigger" data-placeholder="instrument">instrument</div>
+            <div class="select-dropdown"></div>
+          </div>
 
-      <span class="form-section" id="section-module">
-      <span class="form-line-break"></span>I would like to use my
-      <div class="custom-select" id="selectModule">
-      <div class="select-trigger" data-placeholder="module">module</div>
-      <div class="select-dropdown"></div>
-      </div> module
-      </span>
+          <span class="form-section" id="section-module">
+            <div class="custom-select" id="selectModule">
+              <div class="select-trigger" data-placeholder="module">module</div>
+              <div class="select-dropdown"></div>
+            </div>
+          </span>
 
-      <span class="form-section" id="section-condition1">
-      to conduct a
-      <div class="custom-select" id="selectCondition1">
-      <div class="select-trigger" data-placeholder="test type">test type</div>
-      <div class="select-dropdown"></div>
-      </div> test.
-      </span>
+          <span class="form-section" id="section-condition1">
+            <div class="custom-select" id="selectCondition1">
+              <div class="select-trigger" data-placeholder="temperature">temperature</div>
+              <div class="select-dropdown"></div>
+            </div>
+          </span>
 
-      <span class="form-section" id="section-sensor">
-      <span class="form-line-break"></span>I will be using a
-      <div class="custom-select" id="selectSensor">
-      <div class="select-trigger" data-placeholder="sensor">sensor</div>
-      <div class="select-dropdown"></div>
-      </div> sensor.
-      </span>
-      </div>
+          <span class="form-section" id="section-env">
+            <div class="custom-select" id="selectEnv">
+              <div class="select-trigger" data-placeholder="environment">environment</div>
+              <div class="select-dropdown"></div>
+            </div>
+          </span>
 
-      <div id="section-checkboxes-wrapper" style="display: none;">
-      <div class="configure-form-paragraph" style="margin-top: 20px; margin-bottom: 5px;">
-      I am interested in the following additional conditions:
-      </div>
+          <span class="form-section" id="section-sensor">
+            <div class="custom-select" id="selectSensor">
+              <div class="select-trigger" data-placeholder="sensor">sensor</div>
+              <div class="select-dropdown"></div>
+            </div>
+          </span>
 
-      <div class="checkboxes-section">
-      <div class="checkbox-subtitle">Conditions</div>
-      <div class="checkbox-grid" id="checkboxGrid"></div>
+          <span class="form-section" id="section-spe">
+            <div class="custom-select" id="selectSpe">
+              <div class="select-trigger" data-placeholder="specific features">specific features</div>
+              <div class="select-dropdown"></div>
+            </div>
+          </span>
+        </div>
 
-      <div id="imaging-subsection" style="display: none;">
-      <div class="checkbox-subtitle" style="margin-top: 20px;">Imaging</div>
-      <div class="checkbox-grid" id="imagingGrid"></div>
-      </div>
-      </div>
-      </div>
-
-      <div class="configure-actions">
-      <button class="configure-reset-button">Reset All</button>
-      <button class="configure-apply-button">Apply Configuration</button>
-      </div>
+        <div class="configure-actions">
+          <button class="configure-reset-button">Reset All</button>
+          <button class="configure-apply-button">Apply Configuration</button>
+        </div>
       `;
 
-      const navbarParent = navbar.parentElement;
-      navbarParent.insertBefore(modal, navbar.nextSibling);
+      navbar.parentElement.insertBefore(modal, navbar.nextSibling);
 
-      initCustomSelects(modal);
-      setupButtons(modal);
+      // Populate instruments
+      ui.populateDropdown('selectInstrument', 
+        Object.fromEntries(
+          Object.entries(MODAL_DATA.instruments).map(([k, v]) => [k, v.name])
+        )
+      );
 
-      configureButton.addEventListener('click', (e) => {
+      // Event listeners
+      configBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         modal.classList.toggle('active');
-
-        if (modal.classList.contains('active')) {
-          applyModalStateToUI();
-          resyncCheckboxes();
-        }
       });
 
-      modal.querySelector('.configure-close-button').addEventListener('click',
-        () => {
-          modal.classList.remove('active');
-        });
+      modal.querySelector('.configure-close-button').addEventListener('click', () => 
+        modal.classList.remove('active')
+      );
 
-      document.addEventListener('click',
-        (e) => {
-          if (!modal.contains(e.target) && !configureButton.contains(e.target)) {
-            if (modal.classList.contains('active')) {
-              modal.classList.remove('active');
-            }
+      modal.querySelector('.configure-reset-button').addEventListener('click', () => {
+        Object.keys(modalState).forEach(k => modalState[k] = null);
+        document.querySelectorAll('.select-trigger').forEach(t => {
+          t.textContent = t.dataset.placeholder;
+          t.classList.remove('has-value');
+        });
+        stateManager.resetUI();
+        
+        ['bullet_model', 'bullet_module', 'bullet_sensor', 'bullet_env', 'bullet_cond', 'bullet_spe', 'bullet_range']
+          .forEach(key => sessionStorage.removeItem(key));
+        
+        updateResult();
+      });
+
+      modal.querySelector('.configure-apply-button').addEventListener('click', () => {
+        const params = [];
+        
+        if (modalState.instrument) {
+          params.push(`model=${modalState.instrument}`);
+          sessionStorage.setItem('bullet_model', modalState.instrument);
+        }
+        if (modalState.module) {
+          params.push(`module=${modalState.module}`);
+          sessionStorage.setItem('bullet_module', modalState.module);
+        }
+        if (modalState.condition) {
+          params.push(`cond=${modalState.condition}`);
+          sessionStorage.setItem('bullet_cond', modalState.condition);
+        }
+        if (modalState.env) {
+          params.push(`env=${modalState.env}`);
+          sessionStorage.setItem('bullet_env', modalState.env);
+        }
+        if (modalState.sensor) {
+          const config = MODAL_DATA.sensorCodes[modalState.sensor];
+          if (config?.sensor) {
+            params.push(`sensor=${config.sensor}`);
+            sessionStorage.setItem('bullet_sensor', config.sensor);
           }
-        });
+          if (config?.range) {
+            params.push(`range=${config.range}`);
+            sessionStorage.setItem('bullet_range', config.range);
+          }
+        }
+        if (modalState.spe) {
+          params.push(`spe=${modalState.spe}`);
+          sessionStorage.setItem('bullet_spe', modalState.spe);
+        }
 
-      loadConfigFromURL();
+        const url = params.length > 0 ? `?${params.join('&')}` : '';
+        window.location.href = window.location.pathname + url;
+      });
 
-      window.addEventListener('popstate',
-        () => {
-          const urlParams = new URLSearchParams(window.location.search);
-          modalState.instrument = urlParams.get('model') || sessionStorage.getItem('bullet_model');
-          modalState.module = urlParams.get('module') || sessionStorage.getItem('bullet_module');
-          modalState.sensor = urlParams.get('range') || sessionStorage.getItem('bullet_range');
-          modalState.condition1 = urlParams.get('env') || sessionStorage.getItem('bullet_env');
-          const cond = urlParams.get('cond') || sessionStorage.getItem('bullet_cond');
-          modalState.condition2 = cond ? cond.split(','): [];
-          modalState.imaging = urlParams.get('img') || sessionStorage.getItem('bullet_img');
-
-          applyModalStateToUI();
-          resyncCheckboxes();
-        });
-    }
-
-    // === UTILITY: ROBUST OPTION SELECTION ===
-
-    function selectOption(selectId,
-      value) {
-      const trigger = document.querySelector(`#${selectId} .select-trigger`);
-      const optionEl = document.querySelector(`#${selectId} .select-option[data-value="${value}"]`);
-      if (!trigger || !optionEl) return null;
-
-      trigger.textContent = optionEl.textContent;
-      trigger.classList.add('has-value');
-
-      optionEl.closest('.select-dropdown')
-      .querySelectorAll('.select-option')
-      .forEach(opt => opt.classList.remove('selected'));
-      optionEl.classList.add('selected');
-      return optionEl.textContent;
-    }
-
-    function waitThenSelect(selectId, value, callback, retries = 20) {
-      const result = selectOption(selectId, value);
-      if (result !== null) {
-        if (callback) callback(selectId, value, result);
-        return;
-      }
-      if (retries <= 0) return;
-      requestAnimationFrame(() => waitThenSelect(selectId, value, callback, retries - 1));
-    }
-
-    function applyModalStateToUI() {
-      if (modalState.instrument) waitThenSelect('selectInstrument', modalState.instrument);
-      if (modalState.module) waitThenSelect('selectModule', modalState.module);
-      if (modalState.condition1) waitThenSelect('selectCondition1', modalState.condition1);
-      if (modalState.sensor) waitThenSelect('selectSensor', modalState.sensor);
-    }
-
-    function resyncCheckboxes() {
-      document.querySelectorAll('#checkboxGrid input[type="checkbox"]')
-      .forEach(cb => cb.checked = modalState.condition2.includes(cb.value));
-      document.querySelectorAll('#imagingGrid input[type="checkbox"]')
-      .forEach(cb => cb.checked = modalState.imaging === cb.value);
-    }
-
-    function loadConfigFromURL() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const model = urlParams.get('model') || sessionStorage.getItem('bullet_model');
-      const module = urlParams.get('module') || sessionStorage.getItem('bullet_module');
-      const range = urlParams.get('range') || sessionStorage.getItem('bullet_range');
-      const env = urlParams.get('env') || sessionStorage.getItem('bullet_env');
-      const cond = urlParams.get('cond') || sessionStorage.getItem('bullet_cond');
-      const img = urlParams.get('img') || sessionStorage.getItem('bullet_img');
-
-      if (!model) return;
-
-      waitThenSelect('selectInstrument', model, (id, val, label) => {
-        handleSelect(id, val, label);
-
-        if (module) {
-          waitThenSelect('selectModule', module, (id2, val2, label2) => {
-            handleSelect(id2, val2, label2);
-
-            if (env) {
-              waitThenSelect('selectCondition1', env, (id3, val3, label3) => {
-                handleSelect(id3, val3, label3);
-
-                if (range) {
-                  waitThenSelect('selectSensor', range, (id4, val4, label4) => {
-                    handleSelect(id4, val4, label4);
-
-                    if (cond) {
-                      requestAnimationFrame(() => {
-                        const conditions = cond.split(',');
-                        conditions.forEach(c => {
-                          const checkbox = document.querySelector(`#cond2_${c}`);
-                          if (checkbox) {
-                            checkbox.checked = true;
-                            if (!modalState.condition2.includes(c)) {
-                              modalState.condition2.push(c);
-                            }
-                          }
-                        });
-                      });
-                    }
-
-                    if (img) {
-                      requestAnimationFrame(() => {
-                        const imgCheckbox = document.querySelector(`#img_${img}`);
-                        if (imgCheckbox) {
-                          imgCheckbox.checked = true;
-                          modalState.imaging = img;
-                        }
-                      });
-                    }
-                  });
-                }
-              });
-            }
-          });
+      document.addEventListener('click', (e) => {
+        if (!modal.contains(e.target) && !configBtn.contains(e.target)) {
+          modal.classList.remove('active');
         }
       });
-    }
 
-    function initCustomSelects(modal) {
-      const selects = modal.querySelectorAll('.custom-select');
-
-      selects.forEach((selectEl) => {
-        const trigger = selectEl.querySelector('.select-trigger');
-        const dropdown = selectEl.querySelector('.select-dropdown');
+      // Custom select handlers
+      document.querySelectorAll('.custom-select').forEach(select => {
+        const trigger = select.querySelector('.select-trigger');
+        const dropdown = select.querySelector('.select-dropdown');
 
         trigger.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -1080,103 +750,25 @@
         });
       });
 
-      document.querySelectorAll('#selectInstrument .select-option').forEach(option => {
-        option.addEventListener('click', (e) => {
-          e.stopPropagation();
-          handleSelect('selectInstrument',
-            option.dataset.value,
-            option.textContent);
-        });
-      });
-
       document.addEventListener('click', () => {
         document.querySelectorAll('.select-dropdown.active').forEach(dd => {
           dd.classList.remove('active');
           dd.previousElementSibling.classList.remove('active');
         });
       });
-    }
 
-    function setupButtons(modal) {
-      const applyButton = modal.querySelector('.configure-apply-button');
-      applyButton.addEventListener('click', () => {
-        const params = [];
-        if (modalState.instrument) params.push(`model=${modalState.instrument}`);
-        if (modalState.module) params.push(`module=${modalState.module}`);
-
-        if (modalState.sensor) {
-          const sensorConfig = MODAL_DATA.sensorCodes[modalState.sensor];
-          if (sensorConfig.sensor) {
-            params.push(`sensor=${sensorConfig.sensor}`);
-          }
-          if (sensorConfig.range) {
-            params.push(`range=${sensorConfig.range}`);
-          }
-        }
-
-        if (modalState.condition1) params.push(`env=${modalState.condition1}`);
-        if (modalState.condition2.length > 0) params.push(`cond=${modalState.condition2.join(',')}`);
-        if (modalState.imaging) params.push(`img=${modalState.imaging}`);
-
-        const url = params.length > 0 ? `?${params.join('&')}`: '';
-
-        if (modalState.instrument) sessionStorage.setItem('bullet_model', modalState.instrument);
-        if (modalState.module) sessionStorage.setItem('bullet_module', modalState.module);
-        if (modalState.sensor) {
-          const sensorConfig = MODAL_DATA.sensorCodes[modalState.sensor];
-          if (sensorConfig.sensor) sessionStorage.setItem('bullet_sensor', sensorConfig.sensor);
-          if (sensorConfig.range) sessionStorage.setItem('bullet_range', sensorConfig.range);
-        }
-        if (modalState.condition1) sessionStorage.setItem('bullet_env', modalState.condition1);
-        if (modalState.condition2.length > 0) sessionStorage.setItem('bullet_cond', modalState.condition2.join(','));
-        if (modalState.imaging) sessionStorage.setItem('bullet_img', modalState.imaging);
-
-        window.location.href = window.location.pathname + url;
-      });
-
-      const resetButton = modal.querySelector('.configure-reset-button');
-      resetButton.addEventListener('click',
-        () => {
-          modalState = {
-            instrument: null,
-            module: null,
-            condition1: null,
-            sensor: null,
-            condition2: [],
-            imaging: null
-          };
-          document.querySelectorAll('.select-trigger').forEach(trigger => {
-            trigger.textContent = trigger.dataset.placeholder;
-            trigger.classList.remove('has-value');
-          });
-          document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-          ['section-module',
-            'section-condition1',
-            'section-sensor'].forEach(hideSection);
-          document.getElementById('section-checkboxes-wrapper').style.display = 'none';
-
-          ['bullet_model',
-            'bullet_module',
-            'bullet_sensor',
-            'bullet_env',
-            'bullet_cond',
-            'bullet_opt',
-            'bullet_range',
-            'bullet_img'].forEach(key => {
-              sessionStorage.removeItem(key);
-            });
-        });
+      updateResult();
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initConfigureModal);
+      document.addEventListener('DOMContentLoaded', initModal);
     } else {
-      initConfigureModal();
+      initModal();
     }
   })();
 
   // ============================================================================
-  // STEP 4: CONDITIONAL FILTERING (CORRECTED)
+  // STEP 4: CONDITIONAL FILTERING (INCHANGÉ)
   // ============================================================================
   (function() {
     'use strict';
@@ -1184,22 +776,14 @@
     const getParams = () => {
       const p = {};
       new URLSearchParams(location.search).forEach((v, k) => (p[k] = v));
-      ['model',
-        'module',
-        'sensor',
-        'env',
-        'cond',
-        'opt',
-        'other',
-        'img'].forEach(k => {
-          const v = sessionStorage.getItem(`bullet_${k}`);
-          if (v && !p[k]) p[k] = v;
-        });
+      ['model', 'module', 'sensor', 'env', 'cond', 'spe', 'range'].forEach(k => {
+        const v = sessionStorage.getItem(`bullet_${k}`);
+        if (v && !p[k]) p[k] = v;
+      });
       return p;
     };
 
-    const hasVal = (params,
-      val) => Object.values(params).includes(val);
+    const hasVal = (params, val) => Object.values(params).includes(val);
 
     const evalCondition = (() => {
       const cache = new Map();
@@ -1220,8 +804,7 @@
 
           if (/(?![^(]*\)),/.test(c)) {
             const parts = [];
-            let depth = 0,
-            current = '';
+            let depth = 0, current = '';
             for (let i = 0; i < c.length; i++) {
               const ch = c[i];
               if (ch === '(') depth++;
@@ -1261,8 +844,7 @@
 
           if (c.includes('&')) {
             const parts = [];
-            let depth = 0,
-            current = '';
+            let depth = 0, current = '';
             for (let i = 0; i < c.length; i++) {
               const ch = c[i];
               if (ch === '(') depth++;
@@ -1303,11 +885,9 @@
       };
     })();
 
-    // CORRIGÉ: Gère les headings .notion-h ET h1-h6
     function filterToggleHeadings() {
       const params = getParams();
 
-      // 1. Headings Notion (.notion-h)
       document.querySelectorAll('.notion-h').forEach(h => {
         const gray = h.querySelector('.notion-gray');
         if (!gray) return;
@@ -1318,14 +898,13 @@
         const details = h.closest('details');
 
         if (details) {
-          details.style.display = ok ? '': 'none';
+          details.style.display = ok ? '' : 'none';
         } else {
-          h.style.display = ok ? '': 'none';
+          h.style.display = ok ? '' : 'none';
         }
         gray.style.display = 'none';
       });
 
-      // 2. Headings HTML directs (h1-h6)
       document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
         const gray = heading.querySelector('.notion-gray');
         if (!gray) return;
@@ -1333,17 +912,14 @@
         if (!match) return;
 
         const ok = evalCondition(match[0], params);
-        // Masque SEULEMENT le heading, PAS le callout parent
-        heading.style.display = ok ? '': 'none';
+        heading.style.display = ok ? '' : 'none';
         gray.style.display = 'none';
       });
     }
 
-    // CORRIGÉ: Ignore les .notion-gray dans les headings
     function filterTextCallouts() {
       const params = getParams();
       document.querySelectorAll('.notion-callout .notion-gray').forEach(span => {
-        // SKIP si dans un heading ou summary (géré par filterToggleHeadings)
         if (span.closest('.notion-h, h1, h2, h3, h4, h5, h6, summary')) {
           return;
         }
@@ -1353,31 +929,24 @@
         const callout = span.closest('.notion-callout');
         if (!callout) return;
         const ok = evalCondition(match[0], params);
-        callout.style.display = ok ? '': 'none';
+        callout.style.display = ok ? '' : 'none';
         span.style.display = 'none';
       });
     }
 
-    // NOUVEAU: Masque les callouts qui deviennent vides après filtrage
     function hideEmptyCallouts() {
       document.querySelectorAll('.notion-callout').forEach(callout => {
-        // Skip si déjà masqué par une condition
         if (callout.style.display === 'none') return;
 
-        // Vérifie si le callout a du contenu visible
         const hasVisibleContent = Array.from(callout.children).some(child => {
-          // Ignore les icônes
           if (child.classList.contains('notion-callout-icon')) return false;
 
-          // Vérifie si l'élément est visible
           const computedStyle = window.getComputedStyle(child);
           if (computedStyle.display === 'none') return false;
 
-          // Vérifie le texte visible (sans les conditions)
           const textContent = child.textContent.replace(/\{\{[^}]+\}\}/g, '').trim();
           if (textContent.length > 0) return true;
 
-          // Vérifie les médias visibles
           const visibleMedia = child.querySelectorAll('img:not([style*="display: none"]), table:not([style*="display: none"])');
           return visibleMedia.length > 0;
         });
@@ -1388,33 +957,22 @@
       });
     }
 
-    // NOUVEAU: Unroll invisible des toggles avec -o dans gray span
     function unrollInvisibleToggles() {
-      console.log('🔍 unrollInvisibleToggles() appelée');
       const allDetails = document.querySelectorAll('details');
-      console.log(`   Nombre total de <details> trouvés: ${allDetails.length}`);
       let processedCount = 0;
 
       allDetails.forEach((details, index) => {
         const summary = details.querySelector('summary');
         if (!summary) return;
 
-        // Cherche un .notion-gray contenant "-o" (compatible avec {{if rota}}-o)
         const graySpans = summary.querySelectorAll('.notion-gray');
 
         Array.from(graySpans).forEach(span => {
           const text = span.textContent.trim();
           if (text === '-o' || text.includes('-o')) {
-            console.log(`   ✅ Toggle #${index} avec -o trouvé:`, {
-              text: JSON.stringify(text),
-              summaryText: summary.textContent.substring(0, 50) + '...'
-            });
-            // Ouvre le toggle
             details.open = true;
-            // Ajoute une classe pour le styling CSS
             details.classList.add('toggle-unrolled-invisible');
 
-            // Trouve le callout parent et ajoute-lui aussi une classe
             const parentCallout = details.closest('.notion-callout, [class*="notion-callout"]');
             if (parentCallout) {
               parentCallout.classList.add('callout-invisible-wrapper');
@@ -1424,20 +982,14 @@
           }
         });
       });
-
-      console.log(`✅ Unroll invisible: ${processedCount} toggle(s) traité(s)`);
     }
 
     function runAll() {
-      console.log('🚀 runAll() appelé');
       filterToggleHeadings();
       filterTextCallouts();
-      // Unroll les toggles spéciaux après un délai pour être sûr que le DOM est prêt
       setTimeout(unrollInvisibleToggles, 200);
-      // Masquer les callouts vides après le filtrage
       setTimeout(hideEmptyCallouts, 300);
 
-      // Déclenche l'événement personnalisé pour rafraîchir le TOC
       setTimeout(() => {
         window.dispatchEvent(new CustomEvent('filterChanged'));
       }, 400);
@@ -1449,15 +1001,13 @@
       runAll();
     }
 
-    ['popstate',
-      'hashchange',
-      'bulletParamsChanged'].forEach(ev =>
+    ['popstate', 'hashchange', 'bulletParamsChanged'].forEach(ev =>
       window.addEventListener(ev, () => setTimeout(runAll, 0))
     );
   })();
 
   // ============================================================================
-  // STEP 5: TOC ULTRA-SIMPLE (ancres natives)
+  // STEP 5: TOC (INCHANGÉ)
   // ============================================================================
   (function () {
     'use strict';
@@ -1466,18 +1016,16 @@
     const HID_CLASS = 'toc-hidden';
 
     let tocContainer;
-    let tocEntries = []; // [{linkEl, targetEl}, …]
+    let tocEntries = [];
 
-    /*  1.  crée le TOC une seule fois  */
     function buildOnce() {
-      if (document.getElementById(TOC_ID)) return; // déjà fait
+      if (document.getElementById(TOC_ID)) return;
       tocContainer = document.createElement('div');
       tocContainer.id = TOC_ID;
       tocContainer.className = 'dynamic-toc';
       tocContainer.innerHTML = '<div class="toc-title">Contents</div>';
       document.body.appendChild(tocContainer);
 
-      /* tous les titres possibles */
       const sel = '.notion-h1, .notion-h2, .notion-h3, h1, h2, h3, details summary';
       document.querySelectorAll(sel).forEach((el, i) => {
         if (!el.id) el.id = 'toc-' + i;
@@ -1486,39 +1034,27 @@
         a.textContent = el.textContent.replace(/\{\{.*?\}\}|-o/g, '').trim();
         a.className = 'toc-item';
         tocContainer.appendChild(a);
-        tocEntries.push({
-          linkEl: a, targetEl: el
-        });
+        tocEntries.push({ linkEl: a, targetEl: el });
       });
 
-      // Intercepte le clic pour ouvrir les toggles fermés
-      tocContainer.addEventListener('click',
-        e => {
-          if (!e.target.matches('.toc-item')) return;
-          const target = document.getElementById(e.target.hash.slice(1));
-          const details = target?.closest('details');
-          if (details && !details.open) details.open = true;
-          // le navigateur scroll automatiquement juste après
-        });
+      tocContainer.addEventListener('click', e => {
+        if (!e.target.matches('.toc-item')) return;
+        const target = document.getElementById(e.target.hash.slice(1));
+        const details = target?.closest('details');
+        if (details && !details.open) details.open = true;
+      });
     }
 
-    /*  2.  montre/cache les lignes  */
     function refreshTOC() {
-      tocEntries.forEach(({
-        linkEl, targetEl
-      }) => {
-        const visible = targetEl.offsetParent !== null && // display != none
-        window.getComputedStyle(targetEl).display !== 'none';
+      tocEntries.forEach(({ linkEl, targetEl }) => {
+        const visible = targetEl.offsetParent !== null &&
+          window.getComputedStyle(targetEl).display !== 'none';
         linkEl.classList.toggle(HID_CLASS, !visible);
       });
-      /* on cache le bloc s'il est vide */
       const hasVisible = [...tocEntries].some(e => !e.linkEl.classList.contains(HID_CLASS));
-      tocContainer.style.display = hasVisible ? 'block': 'none';
-
-      console.log(`📋 TOC: ${tocEntries.filter(e => !e.linkEl.classList.contains(HID_CLASS)).length} visible(s)`);
+      tocContainer.style.display = hasVisible ? 'block' : 'none';
     }
 
-    /*  3.  on lance une fois au début  */
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         buildOnce(); refreshTOC();
@@ -1527,10 +1063,10 @@
       buildOnce(); refreshTOC();
     }
 
-    /*  4.  après chaque filtre  */
     window.addEventListener('bulletParamsChanged', refreshTOC);
     window.addEventListener('filterChanged', refreshTOC);
 
-    // Expose pour appels manuels
     window.refreshTOC = refreshTOC;
   }());
+
+</script>
